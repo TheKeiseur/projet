@@ -15,3 +15,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\DefaultController::class, 'home'])->name('home');
 Route::get('/posts', [App\Http\Controllers\PostController::class, 'index'])->name('posts.index');
+Route::get('/users/register', [App\Http\Controllers\UserController::class, 'register'])->name('register');
+Route::post('/users', [App\Http\Controllers\UserController::class, 'signup'])->name('signup');
