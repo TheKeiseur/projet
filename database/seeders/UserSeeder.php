@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use App\Models\Post;
 
 class UserSeeder extends Seeder
 {
@@ -21,6 +22,6 @@ class UserSeeder extends Seeder
                 'password' => bcrypt('admin')
         ]);
         
-        User::factory()->count(20)->create();
+        User::factory()->has(Post::factory()->count(10)->hasComments(3))->count(20)->create();
     }
 }
