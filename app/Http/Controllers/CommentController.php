@@ -19,9 +19,8 @@ class CommentController extends Controller
         $post = Post::findOrFail($id);
         
         $comment = new Comment();
-        $comment->pseudo = $request->input('name');
         $comment->content = $request->input('content');
-        $comment->post_id = $id;
+        $comment->user_id = 1;
         $comment->save();
         
         return redirect()->route('posts.show', ['id' => $post->id]);

@@ -19,18 +19,7 @@
             <fieldset>
                 <legend>Ajouter un commentaire</legend>
                 @csrf
-            
-                <div class="form-group">
-                    <label for="name">Pseudo</label>
-                    @if($errors->has('name'))
-                        <input id="name" name="name" value="{{ old('name') }}" type="text" class="form-control is-invalid">
-                        <div class="invalid-feedback">
-                            {{ $errors->first('name') }}
-                        </div>
-                    @else
-                        <input id="name" name="name" value="{{ old('name') }}" type="text" class="form-control">
-                    @endif
-                </div>
+                
                 <div class="form-group">
                     <label for="content">Contenu</label>
                     @if($errors->has('content'))
