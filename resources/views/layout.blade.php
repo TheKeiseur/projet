@@ -18,16 +18,16 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Accueil<span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="{{ route('home') }}">Accueil<span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Questions</a>
+                            <a class="nav-link" href="{{ route('posts.index') }}">Questions</a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">Connexion</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Inscription</a>
+                            <a href="{{ route('register') }}" class="nav-link">Inscription</a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">Utilisateurs</a>
