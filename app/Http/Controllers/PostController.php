@@ -30,15 +30,15 @@ class PostController extends Controller
         // $comments = $post->comments;
         
         // Liste des commentaires du plus récent au plus ancien
-        $comments = $post->comments()->latest()->get();
+        // $comments = $post->comments()->latest()->get();
         
         // Récupération de la liste des catégories
-        $categories = $post->categories;
+        // $categories = $post->categories;
         
         return view('posts.show', [
             'post' => $post,
-            'comments' => $comments,
-            'categories' => $categories
+            // 'comments' => $comments,
+            // 'categories' => $categories
         ]);
     }
 }
