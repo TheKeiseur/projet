@@ -17,6 +17,7 @@ class PostController extends Controller
             'posts' => $posts
         ]);
     }
+    
     public function show(string $id)
     {
         $post = Post::where('id', $id)->firstOrFail();
@@ -27,7 +28,7 @@ class PostController extends Controller
         // }
         
         // Liste des commentaires sans tri
-        // $comments = $post->comments;
+        $comments = $post->comments;
         
         // Liste des commentaires du plus récent au plus ancien
         // $comments = $post->comments()->latest()->get();
@@ -40,5 +41,33 @@ class PostController extends Controller
             // 'comments' => $comments,
             // 'categories' => $categories
         ]);
+    }
+    
+    public function create()
+    {
+        $categories = Category::all();
+        
+        return view('posts.create', [
+            'categories' => $categories
+        ]);
+    }
+    
+    public function store(Request $request)
+    {
+        $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+            'categories' => 'required'
+        ]);
+        
+        $post = new Post();
+        $post->title = $request->input('title');
+        $post->content = $request->input('content');
+        $post->user_id = 1;
+        $post->save();
+        
+        $post->categories()->attach($request->input('categories'));
+        
+        return redirect()->route('home');
     }
 }

@@ -22,6 +22,6 @@ class UserSeeder extends Seeder
                 'password' => bcrypt('admin')
         ]);
         
-        User::factory()->has(Post::factory()->count(10)->hasComments(3))->count(20)->create();
+        User::factory()->has(Post::factory()->count(5)->hasComments(3))->count(20)->create();
     }
 }
