@@ -18,11 +18,11 @@
                 <header>
                     <h3><a href="{{ route('posts.show', ['id' => $post->id]) }}">{{ $post->title }}</a></h3>
                     <small>Question posée par {{ $post->user->name }} le {{ $post->created_at->format('d/m/Y H:i') }}</small>
-                    <ul class="list-group list-group-horizontal">
-                        @foreach($categories as $category)
-                            <li class="list-group-item">{{ $category->name }}</li>
+                    <div>
+                        @foreach($post->categories as $category)
+                            <span class="badge badge-success">{{ $category->name }}</span>
                         @endforeach
-                    </ul>
+                    </div>
                 </header>
                 <p>{!! Str::limit(nl2br(e($post->content)), 150, '(...)') !!}</p>
                 <a class="btn btn-primary" href="{{ route('posts.show', ['id' => $post->id]) }}" role="button">Voir la question</a>
