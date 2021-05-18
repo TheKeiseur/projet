@@ -12,9 +12,11 @@ class DefaultController extends Controller
     public function home()
     {
         $posts = Post::latest()->with('user')->take(5)->get();
+        $categories = Category::all();
         
         return view('homepage', [
-            'posts' => $posts
+            'posts' => $posts,
+            'categories' => $categories
         ]);
     }
 }

@@ -7,6 +7,14 @@
         <header class="mb-3">
             <h1>{{ $post->title }}</h1>
             
+            <h3>Catégorie(s)</h3>
+            <ul class="list-group list-group-horizontal">
+                @foreach($categories as $category)
+                    <li class="list-group-item">{{ $category->name }}</li>
+                @endforeach
+            </ul>
+            
+            
             <small>
                 Rédigé par {{ $post->user->name }} le {{ $post->created_at->format('d/m/Y H:i') }}
             </small>
@@ -34,7 +42,21 @@
                 <button class="btn btn-primary">Ajouter</button>
             </fieldset>
         </form>
-    
-@endsection 
+        
+        <ul class="list-unstyled">
+            @foreach($comments as $comment)
+                <li>
+                    <article>
+                        <header>
+                            Rédigé par {{ $comment->pseudo }} le {{ $comment->created_at->format('d/m/Y H:i') }}
+                        </header>
+                        
+                        <p>{!! e(nl2br($comment->content)) !!}</p>
+                    </article>
+                </li>
+            @endforeach
+        </ul>
+    </aside>
+@endsection
 
 
