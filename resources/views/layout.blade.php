@@ -30,7 +30,7 @@
                             <a href="{{ route('register') }}" class="nav-link">Inscription</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Utilisateurs</a>
+                            <a href="{{ route('users.index') }}" class="nav-link">Utilisateurs</a>
                         </li>
                     </ul>
             </nav>
