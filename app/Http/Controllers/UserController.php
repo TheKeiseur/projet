@@ -4,9 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
+    public function index()
+    {
+        $users = User::get();
+        
+        return view('users.index', [
+            'users' => $users
+        ]);
+    }
+    
     public function register(){
         return view('users.register');
     }
