@@ -19,4 +19,4 @@ Route::get('/users/register', [App\Http\Controllers\UserController::class, 'regi
 Route::get('/posts/{id}', [App\Http\Controllers\PostController::class, 'show'])->name('posts.show');
 Route::post('/users/signup', [App\Http\Controllers\UserController::class, 'signup'])->name('signup');
 Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
-
+Route::post('/posts/{id}/comments', [App\Http\Controllers\CommentController::class, 'store'])->name('posts.comments');
