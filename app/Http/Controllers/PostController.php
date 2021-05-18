@@ -17,4 +17,28 @@ class PostController extends Controller
             'posts' => $posts
         ]);
     }
+    public function show(string $id)
+    {
+        $post = Post::where('id', $id)->firstOrFail();
+        
+        // firstOrFail revient à faire ça : 
+        // if ($post === null) {
+        //     abort(404);
+        // }
+        
+        // Liste des commentaires sans tri
+        // $comments = $post->comments;
+        
+        // Liste des commentaires du plus récent au plus ancien
+        $comments = $post->comments()->latest()->get();
+        
+        // Récupération de la liste des catégories
+        $categories = $post->categories;
+        
+        return view('posts.show', [
+            'post' => $post,
+            'comments' => $comments,
+            'categories' => $categories
+        ]);
+    }
 }
