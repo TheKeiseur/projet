@@ -25,3 +25,4 @@ Route::post('/posts/{id}/comments', [App\Http\Controllers\CommentController::cla
 Route::get('/users/login', [App\Http\Controllers\UserController::class, 'login'])->name('login');
 Route::post('/users/signin', [App\Http\Controllers\UserController::class, 'signin'])->name('signin');
 Route::get('/users/logout', [App\Http\Controllers\UserController::class, 'logout'])->name('logout');
+Route::get('/ajax/users', [App\Http\Controllers\UserController::class, 'search'])->name('users.search');

@@ -5,7 +5,7 @@
         <title>Laravel - @yield('title')</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
         <!--<link rel="stylesheet" href="{{ secure_asset('css/app.css') }}">-->
-        <!--<script src="{{ secure_asset('js/main.js') }}" defer></script>-->
+        <script src="{{ secure_asset('js/main.js') }}" defer></script>
     </head>
     <body>
         <header>

@@ -72,4 +72,15 @@ class UserController extends Controller
     
         return redirect()->route('home');
     }
+    public function search(Request $request)
+    {
+        // Filtre envoyé par la requête ajax
+        $search = $request->input('search');
+        
+        // Liste des utilisateurs filtrée
+        $users = User::where('name', 'like', "%$search%")->get();
+        
+        // Affichage de la vue partielle
+        return view('partials.users.index', ['users' => $users]);
+    }
 }
