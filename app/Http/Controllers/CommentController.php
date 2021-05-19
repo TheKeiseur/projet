@@ -8,6 +8,11 @@ use App\Models\Post;
 
 class CommentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->only('store');
+    }
+    
     public function store(int $id, Request $request)
     {
         $request->validate([

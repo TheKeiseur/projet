@@ -3,7 +3,7 @@
 const searchForm = document.querySelector('#search-user');
 const searchInput = document.querySelector('#search');
 const tbody = document.querySelector('#user-list tbody');
-const BASE_URL = 'https://hugocollebrusco.sites.3wa.io/sites/vraiprojet/projet/public';
+const BASE_URL = 'https://arthursicard.sites.3wa.io/dev/projet/public';
 
 searchForm.addEventListener('submit', (event) => {
     event.preventDefault();
