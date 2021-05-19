@@ -23,16 +23,32 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('posts.index') }}">Questions</a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Connexion</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('register') }}" class="nav-link">Inscription</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('users.index') }}" class="nav-link">Utilisateurs</a>
-                        </li>
+                        @auth
+                            <li class="nav-item">
+                                    <a href="{{ route('logout') }}" class="nav-link">Déconnexion</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('users.index') }}" class="nav-link">Utilisateurs</a>
+                            </li>
+                        @else
+                            <li class="nav-item">
+                                <a href="{{ route('login') }}" class="nav-link">Connexion</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('register') }}" class="nav-link">Inscription</a>
+                            </li>
+                        @endauth
                     </ul>
+                    @auth
+                        <span class="navbar-text">
+                            {{ auth()->user()->name }}
+                        </span>
+                    @else
+                        <span class="navbar-text">
+                            Vous n'êtes pas encore connecté
+                        </span>
+                    @endauth
+                </div>
             </nav>
         </header>
 

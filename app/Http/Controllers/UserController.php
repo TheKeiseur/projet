@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -17,7 +18,8 @@ class UserController extends Controller
         ]);
     }
     
-    public function register(){
+    public function register()
+    {
         return view('users.register');
     }
     
@@ -37,18 +39,37 @@ class UserController extends Controller
         return redirect()->route('home');
     }
     
-    public function authenticate(Request $request)
+    public function login()
+    {
+        return view('users.login');
+    }
+    
+    public function signin(Request $request)
     {
         $credentials = $request->only('email', 'password');
+        
+        $rememberMe = $request->input('remember_me');
+        $rememberMe = $rememberMe === 'on';
+        
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, $rememberMe)) {
             $request->session()->regenerate();
-
-            return redirect()->intended('dashboard');
+            return redirect()->intended('/');
         }
 
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ]);
+    }
+    
+    public function logout(Request $request)
+    {
+        Auth::logout();
+    
+        $request->session()->invalidate();
+    
+        $request->session()->regenerateToken();
+    
+        return redirect()->route('home');
     }
 }
