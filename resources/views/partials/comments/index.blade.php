@@ -3,7 +3,7 @@
         <li>
             <article>
                 <header>
-                    Rédigé par {{ $comment->user()->name }} le {{ $comment->created_at->format('d/m/Y H:i') }}
+                    Rédigé par {{ $comment->user->name }} le {{ $comment->created_at->format('d/m/Y H:i') }}
                 </header>
                         
                 <p>{!! e(nl2br($comment->content)) !!}</p>
