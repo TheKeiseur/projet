@@ -27,3 +27,5 @@ Route::post('/users/signin', [App\Http\Controllers\UserController::class, 'signi
 Route::get('/users/logout', [App\Http\Controllers\UserController::class, 'logout'])->name('logout');
 Route::get('/ajax/users', [App\Http\Controllers\UserController::class, 'search'])->name('users.search');
 Route::get('/users/profile', [App\Http\Controllers\UserController::class, 'show'])->name('users.profile');
+Route::get('/users/edit', [App\Http\Controllers\UserController::class, 'edit'])->name('users.edit');
+Route::post('/users/update', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');

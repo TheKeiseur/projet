@@ -12,6 +12,7 @@
             <li class="list-group-item">Votre adresse mail: {{ $user->email }}</li>
             <li class="list-group-item">Votre date d'inscription: {{ $user->created_at->format('d/m/Y H:i') }}</li>
         </ul>
+        <a class="btn btn-primary" href="{{ route('users.edit') }}" role="button">Changer mes informations</a>
     </article>
     
     <section>
