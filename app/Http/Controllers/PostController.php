@@ -33,7 +33,7 @@ class PostController extends Controller
         // }
         
         // Liste des commentaires sans tri
-         $comments = $post->comments;
+        $comments = $post->comments;
         
         // Liste des commentaires du plus récent au plus ancien
         //$comments = $post->comments()->latest()->get();

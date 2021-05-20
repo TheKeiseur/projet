@@ -19,7 +19,8 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
                 'email' => 'admin@projet.dev',
                 'name' => 'admin',
-                'password' => bcrypt('admin')
+                'password' => bcrypt('admin'),
+                'created_at' => now()
         ]);
         
         User::factory()->has(Post::factory()->count(5)->hasComments(3))->count(20)->create();

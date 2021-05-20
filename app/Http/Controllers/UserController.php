@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Post;
+use App\Models\Comment;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,7 +13,7 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->only(['index', 'logout', 'search']);
+        $this->middleware('auth')->only(['index', 'logout', 'search', 'show']);
     }
     
     public function index()
@@ -88,5 +90,22 @@ class UserController extends Controller
         
         // Affichage de la vue partielle
         return view('partials.users.index', ['users' => $users]);
+    }
+    
+    public function show()
+    {
+        
+        $user = auth()->user();
+        
+        $posts = $user->posts()->latest()->take(10)->get();
+        
+        $comments = $user->comments()->latest()->take(10)->get();
+
+        // dd($comments->toArray());
+        return view('users.profile', [
+            'user' => $user,
+            'posts' => $posts,
+            'comments' => $comments
+        ]);
     }
 }
