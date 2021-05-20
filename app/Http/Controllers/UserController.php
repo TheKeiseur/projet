@@ -19,7 +19,8 @@ class UserController extends Controller
     public function index()
     {
         $users = User::get();
-        
+        $repository = new UserRepository();
+        $totalPosts = $repository -> getTotalPosts();
         return view('users.index', [
             'users' => $users
         ]);
