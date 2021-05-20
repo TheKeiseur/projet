@@ -13,7 +13,7 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->only(['index', 'logout', 'search', 'show']);
+        $this->middleware('auth')->only(['index', 'logout', 'search', 'show', 'edit', 'update']);
     }
     
     public function index()
@@ -107,5 +107,29 @@ class UserController extends Controller
             'posts' => $posts,
             'comments' => $comments
         ]);
+    }
+    
+    public function edit()
+    {
+        return view('users.edit');
+    }
+    
+    public function update(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:6|confirmed'
+        ]);
+        
+        $user = auth()->user();
+        
+        $user->update([
+            'email' => $request->input('email'),
+            'name' => $request->input('name'), 
+            'password' => bcrypt($request->input('password'))
+        ]);
+        
+        return redirect()->route('users.profile');
     }
 }
