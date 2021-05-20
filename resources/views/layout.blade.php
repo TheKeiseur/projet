@@ -28,6 +28,9 @@
                                     <a href="{{ route('logout') }}" class="nav-link">Déconnexion</a>
                             </li>
                             <li class="nav-item">
+                                    <a href="{{ route('users.profile') }}" class="nav-link">Profile</a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="{{ route('users.index') }}" class="nav-link">Utilisateurs</a>
                             </li>
                         @else
