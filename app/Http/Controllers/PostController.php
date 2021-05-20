@@ -9,6 +9,11 @@ use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->only(['create', 'store']);
+    }
+    
     public function index()
     {
         $posts = Post::with('user', 'categories')->latest()->paginate(15);

@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->only(['index', 'logout', 'search']);
+    }
+    
     public function index()
     {
         $users = User::get();
@@ -72,6 +77,7 @@ class UserController extends Controller
     
         return redirect()->route('home');
     }
+    
     public function search(Request $request)
     {
         // Filtre envoyé par la requête ajax
